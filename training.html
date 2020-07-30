@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Training &mdash; Fathom 3.7 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Integrating" href="integrating.html" />
+    <link rel="prev" title="Writing Rules" href="rules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Fathom
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samples.html">Collecting Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Writing Rules</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-trainer">Running the Trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-breakpoints">Setting Breakpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#identifying-misrecognized-elements">Identifying Misrecognized Elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#histograms">Histograms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrating.html">Integrating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Ruleset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ruleset.html">Rules and Rulesets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnodes.html">Fnodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">Clustering</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Command Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands/extract.html">fathom extract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/fox.html">fathom fox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/histogram.html">fathom histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/label.html">fathom label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/list.html">fathom list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/pick.html">fathom pick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/serve.html">fathom serve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/test.html">fathom test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/train.html">fathom train</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Back Matter</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example Ruleset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versions.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Fathom</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Training</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/training.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="training">
+<h1>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h1>
+<p>Training is the process by which Fathom combines your handwritten rules with your labeled example pages to create the most accurate possible recognizer. Training emits a set of numerical parameters:</p>
+<ul class="simple">
+<li><p>One <em>coefficient</em> per rule, which indicates the rule’s relative weight</p></li>
+<li><p>One <em>bias</em> per type, which centers element’s scores so they can be construed as 0..1 confidences</p></li>
+</ul>
+<div class="section" id="running-the-trainer">
+<h2>Running the Trainer<a class="headerlink" href="#running-the-trainer" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Fathom has had several trainers over its evolution. Both the Corpus Framework and the trainer built into old versions of FathomFox are obsoleted by <a class="reference internal" href="commands/train.html"><span class="doc">fathom train</span></a>, described herein.</p>
+</div>
+<p>Once your samples are collected and at least several rules are written, you’re ready to do some initial training. Training is done for one type at a time. If you have types that depend on other types (an advanced case), train the other types first.</p>
+<p>Run the trainer. A simple beginning, using just a training set, is…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fathom</span> <span class="n">train</span> <span class="n">samples</span><span class="o">/</span><span class="n">training</span> <span class="o">--</span><span class="n">ruleset</span> <span class="n">rulesets</span><span class="o">.</span><span class="n">js</span> <span class="o">--</span><span class="n">trainee</span> <span class="n">yourTraineeId</span>
+</pre></div>
+</div>
+<p>…yielding something like…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{&quot;coeffs&quot;: [
+        [&#39;nextAnchorIsJavaScript&#39;, 1.1627885103225708],
+        [&#39;nextButtonTypeSubmit&#39;, 4.613410949707031],
+        [&#39;nextInputTypeSubmit&#39;, 4.374269008636475],
+        [&#39;nextInputTypeImage&#39;, 6.867544174194336],
+        [&#39;nextLoginAttrs&#39;, 0.07278082519769669],
+        [&#39;nextButtonContentContainsLogIn&#39;, -0.6560719609260559],
+        ],
+     &quot;bias&quot;: -3.9029786586761475}
+
+Training precision: 0.9834   Recall: 1.0000                           Predicted
+          Accuracy: 0.9889   95% CI: (0.9780, 0.9997)        ╭───┬── + ───┬── - ───╮
+               FPR: 0.0328   95% CI: (0.0012, 0.0644)   True │ + │    237 │      0 │
+               FNR: 0.0000   95% CI: (0.0000, 0.0000)        │ - │      4 │    118 │
+               MCC: 0.9916                                   ╰───┴────────┴────────╯
+
+Time per page (ms): 2 |▁▃█▅▂▁    | 34    Average per tag: 8
+
+Training per-tag results:
+   AR_534.html  &lt;input type=&quot;password&quot; class=&quot;form-control pass&quot; autocomplete=&quot;off&quot; id=&quot;password        1.00000000
+   CS_474.html  &lt;input type=&quot;password&quot; data-placeholder=&quot;register.password1&quot; placeholder=&quot;Heslo&quot;        1.00000000
+                &lt;input type=&quot;password&quot; data-placeholder=&quot;register.password2&quot; placeholder=&quot;Heslo         1.00000000
+   CZ_36n.html  No targets found.
+   DA_177.html  &lt;input data-validation-match=&quot;#UserModel_VerifyPassword&quot; id=&quot;UserModel_ActionMod        0.99999964
+   ...
+</pre></div>
+</div>
+<p>Viewing the TensorBoard graphs with <code class="docutils literal notranslate"><span class="pre">tensorboard</span> <span class="pre">--logdir</span> <span class="pre">runs/</span></code> will quickly show you whether the loss function is oscillating. If you see oscilloscope-like wiggles rather than a smooth descent, the learning rate is too high: the trainer is taking steps that are too big and overshooting the optimum it’s chasing. Decrease the learning rate by a factor of 10 until the graph becomes monotonically decreasing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fathom</span> <span class="n">train</span> <span class="n">samples</span><span class="o">/</span><span class="n">training</span>  <span class="o">--</span><span class="n">ruleset</span> <span class="n">rulesets</span><span class="o">.</span><span class="n">js</span> <span class="o">--</span><span class="n">trainee</span> <span class="n">yourTraineeId</span> <span class="o">--</span><span class="n">learning</span><span class="o">-</span><span class="n">rate</span> <span class="mf">0.1</span> <span class="o">-</span><span class="n">c</span> <span class="n">tryingToRemoveOscillations</span>
+</pre></div>
+</div>
+<p>Comments added (with <code class="docutils literal notranslate"><span class="pre">-c</span></code>) to your <a class="reference internal" href="commands/train.html"><span class="doc">fathom-train</span></a> calls are your friend, as a heap of anonymous TensorBoard runs otherwise quickly becomes indistinguishable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Fathom currently uses the <a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent#Adam">Adam</a> optimization algorithm, which is good at tuning its own learning rates. Even if the loss graph oscillates at the start, it will eventually flatten out, given enough iterations. However, it’s best to tamp down oscillations from the beginning so you can use validation-guided early stopping. Adam seems to dial in the learning rate quickly enough, as long as you get it within a power of 10.</p>
+<p>Incidentally, it’s not the end of the world if some rules’ scores go slightly outside [0, 1]. Limited tests have gotten away with values up to about 10 without measurable harm to training speed or accuracy. However, when feature values differ in magnitude by a factor of 1000, annoying oscillations dominate early iterations. Stick to [0, 1] for a trouble-free experience.</p>
+</div>
+<p>Once you’ve tamped down oscillations, use validation samples and early stopping (on by default) to keep Fathom from overfitting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fathom</span> <span class="n">train</span> <span class="n">samples</span><span class="o">/</span><span class="n">training</span> <span class="o">--</span><span class="n">ruleset</span> <span class="n">rulesets</span><span class="o">.</span><span class="n">js</span> <span class="o">--</span><span class="n">trainee</span> <span class="n">yourTraineeId</span> <span class="o">--</span><span class="n">validation</span><span class="o">-</span><span class="nb">set</span> <span class="n">samples</span><span class="o">/</span><span class="n">validaton</span>
+</pre></div>
+</div>
+<p>The trainer comes with a variety of adjustment knobs to ensure a good fit and to trade off between false positives and false negatives. For a full tour of its capabilities, see…</p>
+<p><a class="reference internal" href="commands/train.html"><span class="doc">fathom train reference documentation</span></a></p>
+</div>
+<div class="section" id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<p>A sane authoring process is a feedback loop something like this:</p>
+<ol class="arabic simple">
+<li><p>Collect samples. Observe patterns in the <a class="reference internal" href="glossary.html#term-target"><span class="xref std std-term">target</span></a> nodes as you do.</p></li>
+<li><p>Write a few rules based on your observations.</p></li>
+<li><p>Run the trainer. Start with 10-20 training pages and an equal number of validation ones.</p></li>
+<li><p>If accuracy is insufficient, examine the failing training pages. The trainer will point these out on the commandline, but FathomFox’s Evaluator will help you track down ones that are hard to distinguish from their tag excerpts. Remediate by changing or adding rules. If there are smells Fathom is missing—positive or negative—add rules that score based on them.</p></li>
+<li><p>Go back to step 3.</p></li>
+<li><p>Once <em>validation accuracy</em> is sufficient, use <a class="reference internal" href="commands/test.html"><span class="doc">fathom test</span></a> on a fresh set of <em>testing</em> samples. This is your <em>testing accuracy</em> and should reflect real-world performance, assuming your sample size is large and representative enough. The computed 95% confidence intervals should help you decide the former.</p></li>
+<li><p>If testing accuracy is too low, imbibe the testing pages into your training set, and go back to step 3. As typical in supervised learning systems, testing samples should be considered “burned” once they are measured against a single time, as otherwise you are effectively training against them. Samples are precious.</p></li>
+<li><p>If testing accuracy is sufficient, you’re done! Make sure the latest ruleset and coefficients are in your finished product, and ship it.</p></li>
+</ol>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setting-breakpoints">
+<h3>Setting Breakpoints<a class="headerlink" href="#setting-breakpoints" title="Permalink to this headline">¶</a></h3>
+<p>If the trainer reports JavaScript errors, you’ve probably got a bug in your ruleset code. If you can’t find it by examination and need to place a breakpoint, the tool of choice is the FathomFox Evaluator.</p>
+<ol class="arabic">
+<li><p>Run <a class="reference internal" href="commands/fox.html"><span class="doc">fathom fox</span></a>, and pass it your ruleset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fathom</span> <span class="n">fox</span> <span class="o">-</span><span class="n">r</span> <span class="n">rulesets</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use the instance of Firefox that comes up to open a page that you think will reproduce the problem.</p></li>
+<li><p>Show the dev tools, and navigate to the Debugger panel.</p></li>
+<li><p>In the disclosure tree to the left, disclose FathomFox, and select <cite>rulesets.js</cite>.</p></li>
+<li><p>Scroll to the bottom, past the minified mess, and you’ll see your ruleset code. Place a breakpoint as you like, probably in one of your scoring callbacks.</p></li>
+<li><p>Invoke the Evaluator from the Fathom toolbar menu.</p></li>
+<li><p>Click Evaluate to run the ruleset over the loaded tabs.</p></li>
+</ol>
+<p>You’ll end up in the debugger, paused at your breakpoint.</p>
+</div>
+<div class="section" id="identifying-misrecognized-elements">
+<h3>Identifying Misrecognized Elements<a class="headerlink" href="#identifying-misrecognized-elements" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure you have the latest trained coefficients and biases pasted into your ruleset before you do this, or recognition won’t work well.</p>
+</div>
+<p>FathomFox’s Evaluator can point out misrecognized elements, in case the tag exerpts emitted by the trainer are insufficient to identify them. To use the Evaluator:</p>
+<ol class="arabic simple">
+<li><p>Open an instance of Firefox with FathomFox and your ruleset loaded (<code class="docutils literal notranslate"><span class="pre">fathom-fox</span> <span class="pre">-r</span> <span class="pre">rulesets.js</span></code> makes this simple).</p></li>
+<li><p>Open all of the samples you want to diagnose as separate tabs.</p></li>
+<li><p>Open the Evaluator page using FathomFox’s browser action button.</p></li>
+<li><p>In the Trainee dropdown, select the trainee you want to diagnose.</p></li>
+<li><p>Click the Evaluate button.</p></li>
+<li><p>Click any red box to navigate to a page with misrecognized nodes.</p></li>
+<li><p>On that tab, open the dev tools panel (ctrl-shift-N) and switch to the Fathom panel. Unfortunately, there aren’t yet web extension APIs to do this part automatically.</p></li>
+<li><p>At this point, you’ll see a quick and dirty representation of the “bad” element: a new label called “BAD [the trainee]”. Be sure to delete this if you choose to re-save the page for some reason. Also note that the BAD label is created only when the bad cell is clicked, for speed; if you navigate to the bad page manually, the label won’t be there, or there might be an old label from a previous iteration.</p></li>
+<li><p>Return to the Evaluator tab and click any other red boxes you want to explore.</p></li>
+</ol>
+</div>
+<div class="section" id="histograms">
+<h3>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h3>
+<p>Finally, a great way to examine the scores your rules are emitting is <a class="reference internal" href="commands/histogram.html"><span class="doc">fathom histogram</span></a>. It can show you how useful a discriminator a rule is and help you notice when the distribution of output values is not what you expect.</p>
+<img alt="_images/histogram1.png" src="_images/histogram1.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="integrating.html" class="btn btn-neutral float-right" title="Integrating" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rules.html" class="btn btn-neutral float-left" title="Writing Rules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2017-2019, Mozilla Foundation
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
